@@ -1,15 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<title>Todo List</title>
+        <link rel="stylesheet" href ="{%static 'users/style.css' %}">
+        <title>Todo List</title>
     </head>
     
     <body class="container"> 
         
         <div class="btn"> Today is {{today}} </div>
-        <a href="/users/logout_view">logout</a> 
-        <a href="/todo/addlist_view">Add Task List</a> 
+        <a class="btn btn-info float-right" href="/users/logout_view">logout</a> 
+        <a  class="btn btn-success"href="/todo/addlist_view">Add Task List</a> 
+        <hr>
              
             <div class ="row">
                 {% for e in todolist %}   
