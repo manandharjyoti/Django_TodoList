@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<title>Todo List</title>
+    </head>
+    
+    <body class="container"> 
+        
+        <div class="btn"> Today is {{today}} </div>
+        <a href="/users/logout_view">logout</a> 
+        <a href="/todo/addlist_view">Add Task List</a> 
+             
+            <div class ="row">
+                {% for e in todolist %}   
+                    {% if e.priority == "high" %}
+                    <div class="col-sm-4">
+                        <div class ="card text-black bg-success mb-4">
+                            <p class="card-header"><bold>Title: {{e.title}}</bold></p>
+                            <div class="card-body">
+                                <p>Description: {{e.description}}</p>
+                                <p>Date: {{e.date}}</p>
+                                <p>User: {{request.user}}</p>
+                                <p>Priority: {{e.priority}}</p>
+                                <a button type="button" class="btn btn-dark" href="{% url 'todo:delete_view' e.id %}">Delete</button></a>
+                                <a button type="button" class="btn btn-dark" href="{% url 'todo:edit_view' e.id %}">Edit</button></a>           
+                            </div>
+                        </div>                  
+                    </div>    
+                       
+                
+                    {% elif e.date < today %}
+                    <div class="col-sm-4 mb-4">
+                        <div class= "card text-black bg-warning">   
+                            <p class="card-header">Title: {{e.title}}</p>
+                            <div class="card-body">
+                                <p>Description: {{e.description}}</p>
+                                <p>Date: {{e.date}}</p>
+                                <p>User: {{request.user}}</p>
+                                <p>Priority: {{e.priority}}</p>
+                                <a button type="button" class="btn btn-dark" href="{% url 'todo:delete_view' e.id %}">Delete</button></a>
+                                <a button type="button" class="btn btn-dark" href="{% url 'todo:edit_view' e.id %}">Edit</button></a>                       
+                            </div> 
+                        </div>
+                    </div>
+                            
+
+               
+                    {% else %}
+                    <div class="col-sm-4">   
+                        <div class ="card text-black bg-light mb-4">
+                            <p class="card-header">Title: {{e.title}}</p>
+                            <div class="card-body">
+                                <p>Description: {{e.description}}</p>
+                                <p>Date: {{e.date}}</p>
+                                <p>User: {{request.user}}</p>
+                                <p>Priority: {{e.priority}}</p>
+                                <a button type="button" class="btn btn-dark" href="{% url 'todo:delete_view' e.id %}">Delete</button></a>
+                                <a button type="button" class="btn btn-dark" href="{% url 'todo:edit_view' e.id %}">Edit</button></a>
+                            </div>
+                        </div>    
+                    </div>
+
+
+                    
+                    
+
+                    {% endif %}
+                    {% endfor %}        
+                
+            </div>   
+         
+       
+        
+
+    </body>
+
+</html>
+

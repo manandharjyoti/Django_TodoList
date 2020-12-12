@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+ <html lang="en"> 
+   <head> <meta charset="UTF-8">
+      <title>Title</title> 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href ="{%static 'todo/style.css' %}">
+    
+  </head> 
+   <body class="backg">
+            <div class="loginBox">
+              
+               <div class="card">
+                  <center><div id="heading"><h4>Welcome to the TodoList App!</h4></div></center>
+
+                  <hr>
+                  <div id="cento"><h8>{{error}}</h8></div>  
+                  <form method="post" action=" "> {% csrf_token %}
+                     <div class="padding">
+                        <input type="text" name="username" placeholder="username" required>
+                    
+                     
+                     <input type="password" name="password" placeholder="password" required> 
+                     <hr>
+                     
+                          <div id="first">
+                           <input class="btn btn-info " type="submit" value="Login">
+                                                 
+                           <a class="btn btn-info " href = "{% url 'users:signup' %}">Register</a>
+                          </div>
+                           
+                          <br>
+                              
+                          
+                        
+                        
+                        
+                     </div>
+                      
+                  </form>
+             </div>
+         
+            </div>
+         
+         
+     
+      
+     <hr>
+     <br>
+   
+
+       </body> 
+       </html
