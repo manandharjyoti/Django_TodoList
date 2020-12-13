@@ -4,11 +4,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.http import HttpResponse
+from users.forms import SignupForm
 
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -18,7 +19,7 @@ def signup(request):
             return redirect(reverse("todo:todolist_view"))
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 
 def login_view(request):
