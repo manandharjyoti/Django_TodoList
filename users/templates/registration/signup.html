@@ -1,10 +1,27 @@
 {% extends 'registration/base.html' %}
+<div class="card bg-light">
 {% block content%}
 <form method="POST">
   {% csrf_token %}
   
-  {{ form.as_p }}
-  <button type="submit">Sign up</button>
+    
+      
+  <label>username</label><br>
+  <input type="text" name="username" required>
+  <br>
+  
+  
+    <label>Password</label><br>
+    <input type="password" name="password1" required>
+  <br>
+  
+    <label>Confirm Password</label><br>
+    <input type="password" name="password2" required>
+  <br><br>
+  <p><button class="btn btn-info" type="submit" >Sign up</button></p>
+  
 </form>
 
+  
+  
 {% endblock %}

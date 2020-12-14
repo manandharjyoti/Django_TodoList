@@ -6,8 +6,10 @@ from django.contrib.auth.forms import UserCreationForm
 from todo.forms import TaskForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url="/users/login_view/")
 def todolist_view(request):
     today = datetime.now().date()
     todolist = Task.objects.filter(user=request.user)
@@ -16,6 +18,7 @@ def todolist_view(request):
     return render(request, "todolist.html", context)
 
 
+@login_required(login_url="/users/login_view/")
 def addlist_view(request):
     form = TaskForm(request.POST or None)
     if form.is_valid():
@@ -36,6 +39,7 @@ def delete_view(request, task_id):
     return redirect(reverse("todo:todolist_view"))
 
 
+@login_required(login_url="/users/login_view/")
 def edit_view(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     form = TaskForm(request.POST or None, instance=task)
